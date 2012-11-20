@@ -16,14 +16,19 @@ Clone the plugin inside your ``myapp/Plugin`` and activate it with bootstrap ena
 Usage
 --------------
 
-Head on to phpseclib_ documentation_ of what available classes you can use.
+Head on to phpseclib_ documentation_ of what available classes you can use.::
+    
+    <?php
+        include('Net/SFTP.php');
 
+        $sftp = new Net_SFTP('www.domain.tld');
+        if (!$sftp->login('username', 'password')) {
+            exit('Login Failed');
+        }
 
-TODO
-----------------
-
-Currently by default only SFTP loaded, will support loading all or cherry-pick. 
-
+        // outputs the contents of filename.remote to the screen
+        echo $sftp->get('filename.remote');
+    ?>
 
 License
 -------
